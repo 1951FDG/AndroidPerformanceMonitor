@@ -119,7 +119,7 @@ public class BlockInfo {
         }
     }
 
-    private BlockInfo() {
+    public BlockInfo() {
     }
 
     public static BlockInfo newInstance() {
