@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
@@ -22,6 +23,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':blockcanary-analyzer')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 //    api 'com.github.xcc3641.BlockCanary:blockcanary-analyzer:1.4.0'
 }
 
@@ -38,4 +40,7 @@ task sourcesJar(type: Jar) {
 
 artifacts {
     archives sourcesJar
+}
+repositories {
+    mavenCentral()
 }
