@@ -21,8 +21,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(':blockcanary-analyzer')
-//    implementation 'com.github.markzhai:blockcanary-analyzer:1.5.0'
+    api 'com.github.xcc3641.BlockCanary:blockcanary-analyzer:1.4.0'
 }
 
 group = GROUP_NAME
