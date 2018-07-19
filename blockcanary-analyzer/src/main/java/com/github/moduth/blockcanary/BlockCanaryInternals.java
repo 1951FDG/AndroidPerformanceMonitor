@@ -39,9 +39,7 @@ public final class BlockCanaryInternals {
 
     public BlockCanaryInternals() {
 
-        stackSampler = new StackSampler(
-                Looper.getMainLooper().getThread(),
-                sContext.provideDumpInterval());
+        stackSampler = new StackSampler(Looper.getMainLooper().getThread(), sContext.provideDumpInterval());
 
         cpuSampler = new CpuSampler(sContext.provideDumpInterval());
 
@@ -117,11 +115,10 @@ public final class BlockCanaryInternals {
 
     static String getPath() {
         String state = Environment.getExternalStorageState();
-        String logPath = BlockCanaryInternals.getContext()
-                == null ? "" : BlockCanaryInternals.getContext().providePath();
+        String logPath = BlockCanaryInternals.getContext() == null ? "" :
+                BlockCanaryInternals.getContext().providePath();
 
-        if (Environment.MEDIA_MOUNTED.equals(state)
-                && Environment.getExternalStorageDirectory().canWrite()) {
+        if (Environment.MEDIA_MOUNTED.equals(state) && Environment.getExternalStorageDirectory().canWrite()) {
             return Environment.getExternalStorageDirectory().getPath() + logPath;
         }
         return getContext().provideContext().getFilesDir() + BlockCanaryInternals.getContext().providePath();

@@ -53,11 +53,8 @@ class PerformanceUtils {
 
         if (sCoreNum == 0) {
             try {
-                // Get directory containing CPU info
                 File dir = new File("/sys/devices/system/cpu/");
-                // Filter to only list the devices we care about
                 File[] files = dir.listFiles(new CpuFilter());
-                // Return the number of cores (virtual CPU devices)
                 sCoreNum = files.length;
             } catch (Exception e) {
                 Log.e(TAG, "getNumCores exception", e);
