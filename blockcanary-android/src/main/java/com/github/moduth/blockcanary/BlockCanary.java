@@ -39,10 +39,10 @@ public final class BlockCanary {
     private boolean mMonitorStarted = false;
 
     private BlockCanary() {
-        BlockCanaryInternals.setContext(BlockCanaryContext.get());
+        BlockCanaryInternals.setContext(BlockCanaryContext.instance());
         mBlockCanaryCore = BlockCanaryInternals.getInstance();
-        mBlockCanaryCore.addBlockInterceptor(BlockCanaryContext.get());
-        if (!BlockCanaryContext.get().displayNotification()) {
+        mBlockCanaryCore.addBlockInterceptor(BlockCanaryContext.instance());
+        if (!BlockCanaryContext.instance().displayNotification()) {
             return;
         }
         mBlockCanaryCore.addBlockInterceptor(new DisplayService());
@@ -58,7 +58,7 @@ public final class BlockCanary {
      */
     public static BlockCanary install(Context context, BlockCanaryContext blockCanaryContext) {
         BlockCanaryContext.init(context, blockCanaryContext);
-        setEnabled(context, DisplayActivity.class, BlockCanaryContext.get().displayNotification());
+        setEnabled(context, DisplayActivity.class, BlockCanaryContext.instance().displayNotification());
         return get();
     }
 
@@ -112,7 +112,7 @@ public final class BlockCanary {
      * BlockCanary.
      */
     public void recordStartTime() {
-        PreferenceManager.getDefaultSharedPreferences(BlockCanaryContext.get().provideContext())
+        PreferenceManager.getDefaultSharedPreferences(BlockCanaryContext.instance().provideContext())
                 .edit()
                 .putLong("BlockCanary_StartTime", System.currentTimeMillis())
                 .commit();
@@ -125,10 +125,10 @@ public final class BlockCanary {
      */
     public boolean isMonitorDurationEnd() {
         long startTime =
-                PreferenceManager.getDefaultSharedPreferences(BlockCanaryContext.get().provideContext())
+                PreferenceManager.getDefaultSharedPreferences(BlockCanaryContext.instance().provideContext())
                         .getLong("BlockCanary_StartTime", 0);
         return startTime != 0 && System.currentTimeMillis() - startTime >
-                BlockCanaryContext.get().provideMonitorDuration() * 3600 * 1000;
+                BlockCanaryContext.instance().provideMonitorDuration() * 3600 * 1000;
     }
 
     // these lines are originally copied from LeakCanary: Copyright (C) 2015 Square, Inc.

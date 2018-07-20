@@ -61,7 +61,7 @@ internal class LooperMonitor(private val mBlockListener: BlockListener, blockThr
         val startTime = mStartTimestamp
         val startThreadTime = mStartThreadTimestamp
         val endThreadTime = SystemClock.currentThreadTimeMillis()
-        HandlerThreadFactory.getWriteLogThreadHandler().post { mBlockListener.onBlockEvent(startTime, endTime, startThreadTime, endThreadTime) }
+        HandlerThreadFactory.writeLogThreadHandler.post { mBlockListener.onBlockEvent(startTime, endTime, startThreadTime, endThreadTime) }
     }
 
     private fun startDump() {

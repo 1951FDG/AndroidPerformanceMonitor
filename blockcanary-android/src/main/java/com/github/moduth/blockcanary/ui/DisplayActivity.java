@@ -390,7 +390,7 @@ public class DisplayActivity extends Activity {
                         boolean needAddToList = true;
 
                         if (BlockCanaryUtils.isInWhiteList(blockInfo)) {
-                            if (BlockCanaryContext.get().deleteFilesInWhiteList()) {
+                            if (BlockCanaryContext.instance().deleteFilesInWhiteList()) {
                                 blockFile.delete();
                                 blockFile = null;
                             }
@@ -398,7 +398,7 @@ public class DisplayActivity extends Activity {
                         }
 
                         blockInfo.concernStackString = BlockCanaryUtils.concernStackString(blockInfo);
-                        if (BlockCanaryContext.get().filterNonConcernStack() &&
+                        if (BlockCanaryContext.instance().filterNonConcernStack() &&
                                 TextUtils.isEmpty(blockInfo.concernStackString)) {
                             needAddToList = false;
                         }

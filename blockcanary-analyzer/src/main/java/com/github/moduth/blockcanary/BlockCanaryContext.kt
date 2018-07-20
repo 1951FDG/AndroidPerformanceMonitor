@@ -13,45 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.moduth.blockcanary;
+package com.github.moduth.blockcanary
 
-import android.content.Context;
-
-import com.github.moduth.blockcanary.internal.BlockInfo;
-
-import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context
+import com.github.moduth.blockcanary.internal.BlockInfo
+import java.io.File
+import java.util.*
 
 /**
  * User should provide a real implementation of this class to use BlockCanary.
  */
-public class BlockCanaryContext implements BlockInterceptor {
-
-    private static Context sApplicationContext;
-    private static BlockCanaryContext sInstance = null;
-
-    public BlockCanaryContext() {
-    }
-
-    static void init(Context context, BlockCanaryContext blockCanaryContext) {
-        sApplicationContext = context;
-        sInstance = blockCanaryContext;
-    }
-
-    public static BlockCanaryContext get() {
-        if (sInstance == null) {
-            throw new RuntimeException("BlockCanaryContext null");
-        } else {
-            return sInstance;
-        }
-    }
+open class BlockCanaryContext : BlockInterceptor {
 
     /**
      * Provide application context.
      */
-    public Context provideContext() {
-        return sApplicationContext;
+    fun provideContext(): Context {
+        return sApplicationContext
     }
 
     /**
@@ -59,8 +37,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return Qualifier which can specify this installation, like version + flavor.
      */
-    public String provideQualifier() {
-        return "unknown";
+    open fun provideQualifier(): String {
+        return "unknown"
     }
 
     /**
@@ -68,27 +46,27 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return user id
      */
-    public String provideUid() {
-        return "uid";
+    open fun provideUid(): String {
+        return "uid"
     }
 
     /**
      * Network type
      *
-     * @return {@link String} like 2G, 3G, 4G, wifi, etc.
+     * @return [String] like 2G, 3G, 4G, wifi, etc.
      */
-    public String provideNetworkType() {
-        return "unknown";
+    open fun provideNetworkType(): String {
+        return "unknown"
     }
 
     /**
      * Config monitor duration, after this time BlockCanary will stop, use
-     * with {@code BlockCanary}'s isMonitorDurationEnd
+     * with `BlockCanary`'s isMonitorDurationEnd
      *
      * @return monitor last duration (in hour)
      */
-    public int provideMonitorDuration() {
-        return -1;
+    open fun provideMonitorDuration(): Int {
+        return -1
     }
 
     /**
@@ -97,22 +75,23 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return threshold in mills
      */
-    public int provideBlockThreshold() {
-        return 1000;
+    open fun provideBlockThreshold(): Int {
+        return 1000
     }
 
     /**
      * Thread stack dump interval, use when block happens, BlockCanary will dump on main thread
      * stack according to current sample cycle.
-     * <p>
+     *
+     *
      * Because the implementation mechanism of Looper, real dump interval would be longer than
      * the period specified here (especially when cpu is busier).
-     * </p>
+     *
      *
      * @return dump interval (in millis)
      */
-    public int provideDumpInterval() {
-        return provideBlockThreshold();
+    fun provideDumpInterval(): Int {
+        return provideBlockThreshold()
     }
 
     /**
@@ -120,8 +99,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return path of log files
      */
-    public String providePath() {
-        return "/blockcanary/";
+    fun providePath(): String {
+        return "/blockcanary/"
     }
 
     /**
@@ -129,8 +108,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return true if need, else if not need.
      */
-    public boolean displayNotification() {
-        return true;
+    open fun displayNotification(): Boolean {
+        return true
     }
 
     /**
@@ -140,8 +119,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      * @param dest files compressed
      * @return true if compression is successful
      */
-    public boolean zip(File[] src, File dest) {
-        return false;
+    fun zip(src: Array<File>, dest: File): Boolean {
+        return false
     }
 
     /**
@@ -149,8 +128,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @param zippedFile zipped file
      */
-    public void upload(File zippedFile) {
-        throw new UnsupportedOperationException();
+    fun upload(zippedFile: File) {
+        throw UnsupportedOperationException()
     }
 
     /**
@@ -159,8 +138,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return null if simply concern only package with process name.
      */
-    public List<String> concernPackages() {
-        return null;
+    open fun concernPackages(): List<String>? {
+        return null
     }
 
     /**
@@ -168,8 +147,8 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return true if filter, false it not.
      */
-    public boolean filterNonConcernStack() {
-        return false;
+    fun filterNonConcernStack(): Boolean {
+        return false
     }
 
     /**
@@ -177,10 +156,10 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return return null if you don't need white-list filter.
      */
-    public List<String> provideWhiteList() {
-        LinkedList<String> whiteList = new LinkedList<>();
-        whiteList.add("org.chromium");
-        return whiteList;
+    open fun provideWhiteList(): List<String> {
+        val whiteList = LinkedList<String>()
+        whiteList.add("org.chromium")
+        return whiteList
     }
 
     /**
@@ -188,15 +167,14 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return true if delete, false it not.
      */
-    public boolean deleteFilesInWhiteList() {
-        return true;
+    fun deleteFilesInWhiteList(): Boolean {
+        return true
     }
 
     /**
      * Block interceptor, developer may provide their own actions.
      */
-    @Override
-    public void onBlock(Context context, BlockInfo blockInfo) {
+    override fun onBlock(context: Context, blockInfo: BlockInfo) {
 
     }
 
@@ -205,7 +183,22 @@ public class BlockCanaryContext implements BlockInterceptor {
      *
      * @return true if stop, false otherwise
      */
-    public boolean stopWhenDebugging() {
-        return true;
+    open fun stopWhenDebugging(): Boolean {
+        return true
+    }
+
+    companion object {
+
+        private lateinit var sApplicationContext: Context
+        private lateinit var sInstance: BlockCanaryContext
+
+        @JvmStatic
+        fun init(context: Context, blockCanaryContext: BlockCanaryContext) {
+            sApplicationContext = context
+            sInstance = blockCanaryContext
+        }
+
+        @JvmStatic
+        fun instance(): BlockCanaryContext = sInstance
     }
 }

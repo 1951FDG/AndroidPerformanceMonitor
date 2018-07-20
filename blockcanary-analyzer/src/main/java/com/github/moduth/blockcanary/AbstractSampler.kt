@@ -29,7 +29,7 @@ internal abstract class AbstractSampler(sampleInterval: Long) {
         override fun run() {
             doSample()
             if (mShouldSample.get()) {
-                HandlerThreadFactory.getTimerThreadHandler()
+                HandlerThreadFactory.timerThreadHandler
                         .postDelayed(this, mSampleInterval)
             }
         }
@@ -45,8 +45,8 @@ internal abstract class AbstractSampler(sampleInterval: Long) {
         }
         mShouldSample.set(true)
 
-        HandlerThreadFactory.getTimerThreadHandler().removeCallbacks(mRunnable)
-        HandlerThreadFactory.getTimerThreadHandler().postDelayed(mRunnable, BlockCanaryInternals.getInstance().sampleDelay)
+        HandlerThreadFactory.timerThreadHandler.removeCallbacks(mRunnable)
+        HandlerThreadFactory.timerThreadHandler.postDelayed(mRunnable, BlockCanaryInternals.getInstance().sampleDelay)
     }
 
     fun stop() {
@@ -54,7 +54,7 @@ internal abstract class AbstractSampler(sampleInterval: Long) {
             return
         }
         mShouldSample.set(false)
-        HandlerThreadFactory.getTimerThreadHandler().removeCallbacks(mRunnable)
+        HandlerThreadFactory.timerThreadHandler.removeCallbacks(mRunnable)
     }
 
     protected abstract fun doSample()
