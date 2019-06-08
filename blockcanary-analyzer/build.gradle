@@ -3,7 +3,7 @@ apply from: 'gradle-mvn-push.gradle'
 
 android {
     compileSdkVersion LIBRARY_COMPILE_SDK_VERSION
-    buildToolsVersion LIBRARY_BUILD_TOOLS_VERSION
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         minSdkVersion LIBRARY_MIN_SDK_VERSION

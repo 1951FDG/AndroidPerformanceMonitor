@@ -59,6 +59,7 @@ public final class BlockCanaryInternals {
                             .setCpuBusyFlag(cpuSampler.isCpuBusy(realTimeStart, realTimeEnd))
                             .setRecentCpuRate(cpuSampler.getCpuRateInfo())
                             .setThreadStackEntries(threadStackEntries)
+                            .setStackTraceElements(stackSampler.getTraceElements())
                             .flushString();
                     LogWriter.save(blockInfo.toString());
 

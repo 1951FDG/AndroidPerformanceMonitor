@@ -3,7 +3,7 @@ apply from: 'gradle-mvn-push.gradle'
 
 android {
     compileSdkVersion LIBRARY_COMPILE_SDK_VERSION
-    buildToolsVersion LIBRARY_BUILD_TOOLS_VERSION
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         minSdkVersion LIBRARY_MIN_SDK_VERSION
@@ -21,6 +21,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-//    compile project(':blockcanary-analyzer')
-    compile 'com.github.markzhai:blockcanary-analyzer:1.5.0'
+    compile project(':blockcanary-analyzer')
+ //   compile 'com.github.markzhai:blockcanary-analyzer:1.5.0'
 }
