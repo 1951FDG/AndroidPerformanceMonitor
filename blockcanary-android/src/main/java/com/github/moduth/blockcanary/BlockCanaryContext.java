@@ -17,7 +17,7 @@ package com.github.moduth.blockcanary;
 
 import android.content.Context;
 
-import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
 
 import java.io.File;
 import java.util.LinkedList;

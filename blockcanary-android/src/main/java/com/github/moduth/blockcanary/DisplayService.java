@@ -23,7 +23,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
 import com.github.moduth.blockcanary.ui.DisplayActivity;
 
 import java.lang.reflect.InvocationTargetException;
@@ -33,7 +33,6 @@ import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.HONEYCOMB;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 final class DisplayService implements BlockInterceptor {
 

@@ -15,7 +15,7 @@
  */
 package com.github.moduth.blockcanary;
 
-import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

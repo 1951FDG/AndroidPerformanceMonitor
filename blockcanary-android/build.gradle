@@ -21,6 +21,4 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    implementation 'com.github.okasurya.AndroidPerformanceMonitor:blockcanary-analyzer:1.4.0'
-    implementation 'com.github.markzhai:blockcanary-analyzer:1.5.0'
 }

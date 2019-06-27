@@ -2,7 +2,7 @@ package com.github.moduth.blockcanary.ui;
 
 import android.util.Log;
 
-import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
 
 import java.io.BufferedReader;
 import java.io.File;

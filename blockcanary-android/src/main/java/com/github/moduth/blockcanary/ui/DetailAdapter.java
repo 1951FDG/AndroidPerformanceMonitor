@@ -24,7 +24,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.github.moduth.blockcanary.R;
-import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
 
 import java.util.Arrays;
 

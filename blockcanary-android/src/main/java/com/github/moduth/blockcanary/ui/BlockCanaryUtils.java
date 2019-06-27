@@ -3,8 +3,8 @@ package com.github.moduth.blockcanary.ui;
 import android.text.TextUtils;
 
 import com.github.moduth.blockcanary.BlockCanaryInternals;
-import com.github.moduth.blockcanary.internal.BlockInfo;
-import com.github.moduth.blockcanary.internal.ProcessUtils;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.ProcessUtils;
 
 import java.util.LinkedList;
 import java.util.List;

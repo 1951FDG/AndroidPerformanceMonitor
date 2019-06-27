@@ -18,7 +18,7 @@ package com.github.moduth.blockcanary;
 import android.os.Environment;
 import android.os.Looper;
 
-import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.github.moduth.blockcanary.analyzer.internal.BlockInfo;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -91,7 +91,7 @@ public final class BlockCanaryInternals {
     }
 
     /**
-     * set {@link BlockCanaryContext} implementation
+     * set {@link com.github.moduth.blockcanary.BlockCanaryContext} implementation
      *
      * @param context context
      */

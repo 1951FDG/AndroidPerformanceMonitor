@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.moduth.blockcanary.internal;
+package com.github.moduth.blockcanary.analyzer.internal;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
