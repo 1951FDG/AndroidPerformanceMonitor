@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 apply from: 'gradle-mvn-push.gradle'
 
 android {
@@ -27,3 +28,5 @@ dependencies {
     //implementation 'com.github.markzhai:blockcanary-analyzer:1.5.0'
     implementation 'com.android.support:support-compat:28.0.0'
 }
+
+group = GROUP_NAME
